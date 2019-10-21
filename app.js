@@ -17,7 +17,7 @@ var categories = ['joy', 'sorrow', 'anger', 'surprise']
 var result = { "joy": 0,"sorrow" :0,"anger":0,"surprise":0}
 // init with auth
 vision.init({
-    auth: 'AIzaSyCAdkejP6GBbOP1iC0Kq5g8Lhq6R7vf4uY'
+    auth: ''
 })
 
 var app = express();
@@ -55,8 +55,6 @@ app.post('/postImg', function (request, response) {
     facialExpression.push(res.responses[0].faceAnnotations[0].sorrowLikelihood);
     facialExpression.push(res.responses[0].faceAnnotations[0].angerLikelihood);
     facialExpression.push(res.responses[0].faceAnnotations[0].surpriseLikelihood);
-
-
     for (var k = 0; k < facialExpression.length; k++) {
       if (facialExpression[k] == 'UNKNOWN') {
         facialExpression[k] = 0;
